@@ -6,6 +6,7 @@ export default class ConnectorCtrl {
   }
 
   getByID (id) {
+    console.log('id: ' + id)
     return axios.get('/api/v1/Connector/' + id)
   }
 

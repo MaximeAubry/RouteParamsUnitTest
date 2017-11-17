@@ -46,9 +46,11 @@ export default {
   }),
   mounted () {
     console.log('mounted')
+    console.log(this.$route)
     var vm = this
-    api.$ConnectorCtrl.getByID(this.$router.currentRoute.params.id)
+    api.$ConnectorCtrl.getByID(this.$route.params.id)
       .then(response => {
+        console.log(response.data)
         vm.credentials.client_id = response.data.client_id
         vm.credentials.client_secret = response.data.client_secret
         vm.connector.name = response.data.name
@@ -61,6 +63,7 @@ export default {
       .catch(error => {
         console.log('Http request failure: unable to get connectors list.', error.message)
       })
+    console.log('end mounted')
   },
   methods: {
     generateNewID: function () {
